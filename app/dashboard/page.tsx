@@ -2,7 +2,16 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
-import { Trophy, Heart, Target, LogOut, Plus, Trash2, Calendar } from 'lucide-react'
+import dynamic from 'next/dynamic'
+
+const Trophy = dynamic(() => import('lucide-react').then((mod) => mod.Trophy))
+const Heart = dynamic(() => import('lucide-react').then((mod) => mod.Heart))
+const Target = dynamic(() => import('lucide-react').then((mod) => mod.Target))
+const LogOut = dynamic(() => import('lucide-react').then((mod) => mod.LogOut))
+const Plus = dynamic(() => import('lucide-react').then((mod) => mod.Plus))
+const Trash2 = dynamic(() => import('lucide-react').then((mod) => mod.Trash2))
+const Calendar = dynamic(() => import('lucide-react').then((mod) => mod.Calendar))
+
 
 export default function DashboardPage() {
   const router = useRouter()

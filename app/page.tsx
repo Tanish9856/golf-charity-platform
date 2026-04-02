@@ -1,7 +1,13 @@
 'use client'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
-import { Trophy, Heart, Target, ChevronRight, Star } from 'lucide-react'
+import dynamic from 'next/dynamic'
+
+const Trophy = dynamic(() => import('lucide-react').then((mod) => mod.Trophy), { ssr: false })
+const Heart = dynamic(() => import('lucide-react').then((mod) => mod.Heart), { ssr: false })
+const Target = dynamic(() => import('lucide-react').then((mod) => mod.Target), { ssr: false })
+const ChevronRight = dynamic(() => import('lucide-react').then((mod) => mod.ChevronRight), { ssr: false })
+const Star = dynamic(() => import('lucide-react').then((mod) => mod.Star), { ssr: false })
 
 export default function HomePage() {
   return (
