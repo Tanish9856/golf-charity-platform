@@ -64,32 +64,23 @@ export default function DashboardPage() {
   }
 
   const addScore = async () => {
+    console.log("Button Clicked!"); // Log 1
     setScoreError('');
     const scoreNum = parseInt(newScore);
 
-    // 1. Validation (Matches PRD Range 1-45)
     if (!newScore || isNaN(scoreNum) || scoreNum < 1 || scoreNum > 45) {
+      console.log("Validation Failed: Score");
       setScoreError('Score must be between 1 and 45'); 
       return;
     }
     if (!newDate) { 
+      console.log("Validation Failed: Date");
       setScoreError('Please select a date'); 
       return; 
     }
 
-    // 2. Ensure User exists (Critical for RLS Policy)
-    if (!user?.id) {
-      setScoreError('User session not found. Please refresh.');
-      return;
-    }
+    console.log("Attempting Database Insert..."); // Log 2
 
-    // 3. Rolling Logic: Delete oldest if at limit (PRD Requirement)
-    if (scores.length >= 5) {
-      const oldest = scores[scores.length - 1];
-      await supabase.from('scores').delete().eq('id', oldest.id);
-    }
-
-    // 4. Insert with 'played_on' to match DB Schema
     const { error } = await supabase.from('scores').insert({
       user_id: user.id,
       score: scoreNum,
@@ -97,12 +88,13 @@ export default function DashboardPage() {
     });
 
     if (error) {
-      console.error("Supabase Insert Error:", error.message);
+      console.error("Supabase Error:", error.message);
       setScoreError(`Database Error: ${error.message}`);
     } else {
+      console.log("Success! refreshing data...");
       setNewScore('');
       setNewDate('');
-      getUser(); // Refresh list to show new score
+      getUser(); 
     }
   };
 
