@@ -51,29 +51,47 @@ export default function DashboardPage() {
   }
 
   const addScore = async () => {
-    setScoreError('')
-    const scoreNum = parseInt(newScore)
+    setScoreError('');
+    const scoreNum = parseInt(newScore);
+
+    // 1. Validation (Matches PRD Range 1-45)
     if (!newScore || isNaN(scoreNum) || scoreNum < 1 || scoreNum > 45) {
-      setScoreError('Score must be between 1 and 45'); return
+        setScoreError('Score must be between 1 and 45'); 
+        return;
     }
-    if (!newDate) { setScoreError('Please select a date'); return }
+    if (!newDate) { 
+        setScoreError('Please select a date'); 
+        return; 
+    }
 
-    // If already 5 scores, delete the oldest
+    // 2. Ensure User exists (Prevents 400 Errors)
+    if (!user?.id) {
+        setScoreError('User session not found. Please log in again.');
+        return;
+    }
+
+    // 3. Rolling Logic: Delete oldest if at limit (PRD Requirement)
     if (scores.length >= 5) {
-      const oldest = scores[scores.length - 1]
-      await supabase.from('scores').delete().eq('id', oldest.id)
+        const oldest = scores[scores.length - 1];
+        await supabase.from('scores').delete().eq('id', oldest.id);
     }
 
-    await supabase.from('scores').insert({
-      user_id: user.id,
-      score: scoreNum,
-      played_on: newDate
-    })
+    // 4. Insert with Error Catching
+    const { error } = await supabase.from('scores').insert({
+        user_id: user.id,
+        score: scoreNum,
+        date: newDate // DOUBLE CHECK: Is your column 'played_on' or 'date'?
+    });
 
-    setNewScore('')
-    setNewDate('')
-    getUser()
-  }
+    if (error) {
+        console.error("Supabase Insert Error:", error.message);
+        setScoreError('Failed to save score. Check console for details.');
+    } else {
+        setNewScore('');
+        setNewDate('');
+        getUser(); // Refresh list
+    }
+    };
 
   const deleteScore = async (id: string) => {
     await supabase.from('scores').delete().eq('id', id)
