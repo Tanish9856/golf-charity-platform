@@ -12,7 +12,7 @@ GolfGives is a modern, full-stack subscription platform where golfers track thei
 |------|-----|
 | 🏠 Homepage | [https://your-app.vercel.app](https://golf-charity-platform-six-gamma.vercel.app/) |
 | 👤 User Dashboard | [https://your-app.vercel.app/dashboard](https://golf-charity-platform-six-gamma.vercel.app/dashboard) |
-| 🔧 Admin Panel | https://your-app.vercel.app/admin |
+| 🔧 Admin Panel | [https://your-app.vercel.app/admin](https://golf-charity-platform-six-gamma.vercel.app/admin) |
 
 **Test Credentials:**
 
