@@ -1,35 +1,77 @@
-# ⛳ GolfGives: Charity & Score Tracking Platform
+# ⛳ GolfGives — Golf Charity Subscription Platform
 
-GolfGives is a full-stack application designed for golfers to track their performance while supporting global charities. Users enter their daily scores, and every entry contributes to a monthly jackpot draw for their chosen cause.
+> Built as part of the Digital Heroes Full-Stack Development Trainee Selection Process.
+
+GolfGives is a modern, full-stack subscription platform where golfers track their Stableford scores, compete in monthly prize draws, and automatically donate to a charity of their choice — all in one beautifully designed application.
+
+---
+
+## 🌐 Live Demo
+
+| Link | URL |
+|------|-----|
+| 🏠 Homepage | https://your-app.vercel.app |
+| 👤 User Dashboard | https://your-app.vercel.app/dashboard |
+| 🔧 Admin Panel | https://your-app.vercel.app/admin |
+
+**Test Credentials:**
+
+| Role | Email | Password |
+|------|-------|----------|
+| User | tanishgoyal08@gmail.com | 123456 |
+| Admin | admin@golfgives.com | Admin@123456 |
+
+---
+
+## 📸 Screenshots
+
+### Homepage
+![Homepage](screenshots/homepage.png)
+
+### User Dashboard — Overview
+![Dashboard Overview](screenshots/dashboard-overview.png)
+
+### Score Management
+![Score Management](screenshots/scores.png)
+
+### Charity Selection
+![Charity Selection](screenshots/charity.png)
+
+### Draw Results
+![Draw Results](screenshots/draws.png)
+
+### Admin Panel
+![Admin Panel](screenshots/admin-overview.png)
+
+### Admin Draw Engine
+![Draw Engine](screenshots/admin-draws.png)
+
+---
 
 ## 🚀 Key Features
 
-* **Secure Dashboard**: Private user area showing subscription status and key performance metrics.
-* **Rolling Score Logic**: A custom algorithm that tracks only the latest 5 scores, automatically removing the oldest entry to maintain data freshness.
-* **Charity Integration**: Dynamic selection of global charities with real-time updates to user profiles.
-* **Verified Draws**: A transparent system to view monthly draw results and jackpot winners.
+### 👤 User Features
+- Secure signup, login and session management via Supabase Auth
+- Subscription management via Stripe (Monthly £9.99 / Yearly £99.99)
+- Rolling score logic — only the latest 5 Stableford scores are kept (1–45 range)
+- Charity selection with adjustable contribution percentage (min 10%)
+- Monthly draw results visible in dashboard
+- Winnings overview with payment status
 
-## 📸 Project Walkthrough
+### 🔧 Admin Features
+- Full user management — view, activate, deactivate subscriptions
+- Draw engine with two modes:
+  - 🎲 **Random** — standard lottery-style
+  - 🧠 **Algorithmic** — weighted by most frequent user scores
+- Simulation mode before publishing draws
+- Prize pool auto-calculation (40% jackpot / 35% 4-match / 25% 3-match)
+- Jackpot rollover if no 5-match winner
+- Winner verification — Approve / Reject submissions
+- Payout tracking — Pending → Paid
+- Charity management — Add, edit, delete listings
 
-### 1. User Dashboard & Analytics
-The overview provides a snapshot of the user's current charity, total scores entered, and subscription status.
-![Dashboard Overview](screenshots/Screenshot%202026-04-07%20112428.png)
+---
 
-### 2. Performance Tracking
-Users can add new scores with date validation. The system manages the database to ensure a maximum of 5 scores per user.
-![Score Management](screenshots/Screenshot%202026-04-07%20112527.png)
+## 🏗️ System Architecture
 
-### 3. Charity Selection
-Users can browse and select from a list of verified charities to support through their subscription.
-![Charity Selection](screenshots/Screenshot%202026-04-07%20112537.png)
-
-### 4. Database Architecture (Supabase)
-The backend is powered by Supabase, utilizing Row Level Security (RLS) to ensure users can only access their own sensitive data.
-![Supabase Schema](screenshots/Screenshot%202026-04-07%20112620.png)
-
-## 💻 Tech Stack
-
-* **Frontend**: Next.js 14, Tailwind CSS, Lucide Icons.
-* **Backend/Database**: Supabase (PostgreSQL).
-* **Authentication**: Supabase Auth with custom RLS policies.
-* **Deployment**: Vercel.
+### Database Schema (Supabase/PostgreSQL)
