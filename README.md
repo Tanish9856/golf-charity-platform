@@ -75,3 +75,81 @@ GolfGives is a modern, full-stack subscription platform where golfers track thei
 ## 🏗️ System Architecture
 
 ### Database Schema (Supabase/PostgreSQL)
+
+### Prize Pool Logic
+
+| Match Type | Pool Share | Rollover |
+|------------|-----------|---------|
+| 5-Number Match | 40% | ✅ Yes (Jackpot) |
+| 4-Number Match | 35% | ❌ No |
+| 3-Number Match | 25% | ❌ No |
+
+---
+
+## 💻 Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Frontend | Next.js 16, Tailwind CSS, Lucide Icons |
+| Backend | Next.js API Routes |
+| Database | Supabase (PostgreSQL) |
+| Auth | Supabase Auth + RLS Policies |
+| Payments | Stripe (Subscriptions + Webhooks) |
+| Deployment | Vercel (new account) + Supabase (new project) |
+
+---
+
+## 🔐 Security
+
+- Row Level Security (RLS) enforced on all tables
+- Users can only access their own data at database level
+- JWT-based authentication via Supabase
+- Stripe webhook signature verification
+- Environment variables for all sensitive keys
+
+---
+
+## 🗄️ Local Development
+```bash
+# Clone the repo
+git clone https://github.com/Tanish9856/golf-charity-platform
+
+# Install dependencies
+cd golf-charity-platform
+npm install
+
+# Add environment variables
+cp .env.example .env.local
+# Fill in your Supabase and Stripe keys
+
+# Run development server
+npm run dev
+```
+
+---
+
+## 📋 PRD Checklist
+
+- ✅ User signup & login
+- ✅ Subscription flow (monthly and yearly)
+- ✅ Score entry — 5-score rolling logic
+- ✅ Draw system logic and simulation
+- ✅ Charity selection and contribution calculation
+- ✅ Winner verification flow and payout tracking
+- ✅ User Dashboard — all modules functional
+- ✅ Admin Panel — full control and usability
+- ✅ Responsive design on mobile and desktop
+- ✅ Row Level Security on all tables
+- ✅ Deployed to Vercel with new account
+- ✅ New Supabase project
+
+---
+
+## 👨‍💻 Built By
+
+**Tanish Goyal**
+BTech Computer Science — Poornima Institute of Engineering & Technology, Jaipur
+
+> Built from scratch in under 3 days with no prior Next.js experience.
+
+GitHub: https://github.com/Tanish9856
