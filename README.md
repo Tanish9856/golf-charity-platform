@@ -136,11 +136,11 @@ npm run dev
 - ✅ Draw system logic and simulation
 - ✅ Charity selection and contribution calculation
 - ✅ Winner verification flow and payout tracking
-- ✅ User Dashboard — all modules functional
+- ✅ User Dashboard — Development in progress (Modules A & B functional)
 - ✅ Admin Panel — full control and usability
 - ✅ Responsive design on mobile and desktop
 - ✅ Row Level Security on all tables
-- ✅ Deployed to Vercel with new account
+- ✅ Deployed to Vercel 
 - ✅ New Supabase project
 
 ---
