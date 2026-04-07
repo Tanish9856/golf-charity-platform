@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ⛳ GolfGives: Charity & Score Tracking Platform
 
-## Getting Started
+GolfGives is a full-stack application designed for golfers to track their performance while supporting global charities. Users enter their daily scores, and every entry contributes to a monthly jackpot draw for their chosen cause.
 
-First, run the development server:
+## 🚀 Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+* **Secure Dashboard**: Private user area showing subscription status and key performance metrics.
+* **Rolling Score Logic**: A custom algorithm that tracks only the latest 5 scores, automatically removing the oldest entry to maintain data freshness.
+* **Charity Integration**: Dynamic selection of global charities with real-time updates to user profiles.
+* **Verified Draws**: A transparent system to view monthly draw results and jackpot winners.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📸 Project Walkthrough
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. User Dashboard & Analytics
+The overview provides a snapshot of the user's current charity, total scores entered, and subscription status.
+![Dashboard Overview](screenshots/Screenshot%202026-04-07%20112428.png)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. Performance Tracking
+Users can add new scores with date validation. The system manages the database to ensure a maximum of 5 scores per user.
+![Score Management](screenshots/Screenshot%202026-04-07%20112527.png)
 
-## Learn More
+### 3. Charity Selection
+Users can browse and select from a list of verified charities to support through their subscription.
+![Charity Selection](screenshots/Screenshot%202026-04-07%20112537.png)
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Database Architecture (Supabase)
+The backend is powered by Supabase, utilizing Row Level Security (RLS) to ensure users can only access their own sensitive data.
+![Supabase Schema](screenshots/Screenshot%202026-04-07%20112620.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💻 Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* **Frontend**: Next.js 14, Tailwind CSS, Lucide Icons.
+* **Backend/Database**: Supabase (PostgreSQL).
+* **Authentication**: Supabase Auth with custom RLS policies.
+* **Deployment**: Vercel.
